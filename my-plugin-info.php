@@ -3,7 +3,7 @@
 Plugin Name: My Plugin Info
 Plugin URI: http://www.dreamsonline.net/wordpress-plugins/my-plugin-info/
 Description: Communicate with WordPress.org Plugins API to retrive your Plugin Information
-Version: 0.1
+Version: 0.1.1
 Author: Dreams Online Themes
 Author Email: hello@dreamsmedia.in
 License:
@@ -39,12 +39,6 @@ if ( ! class_exists( 'DOT_MyPluginInfo' ) )
 			add_action( 'init', array( &$this, 'init_my_plugin_info' ) );
 		}
 
-		/**
-		 * Runs when the plugin is activated
-		 */
-		function install_my_plugin_info() {
-			// do not generate any output here
-		}
 
 		/**
 		 * Runs when the plugin is initialized
@@ -72,49 +66,6 @@ if ( ! class_exists( 'DOT_MyPluginInfo' ) )
 			}
 
 
-			// Sanitize slug attribute
-			$slug = sanitize_title( $slug );
-
-
-			// Create a empty array with variable name different based on plugin slug
-			$mpi_transient_name = 'mpi' . $slug;
-
-
-			/**
-			 * Check if transient with the plugin data exists
-			 */
-			$mpi_info = get_transient( $mpi_transient_name );
-
-			if ( empty( $mpi_info ) ) {
-
-				/**
-				 * Connect to WordPress.org using plugins_api
-				 * About plugins_api -
-				 * http://wp.tutsplus.com/tutorials/plugins/communicating-with-the-wordpress-org-plugin-api/
-				 */
-				require_once ABSPATH . 'wp-admin/includes/plugin-install.php';
-				$mpi_info = plugins_api( 'plugin_information', array( 'slug' => $slug ) );
-
-
-				// Check for errors with the data returned from WordPress.org
-				if ( !$mpi_info or is_wp_error( $mpi_info ) ) {
-					return false;
-				}
-
-
-				// Set a transient with the plugin data
-				// Use Options API with auto update cron job in next version.
-				set_transient($mpi_transient_name, $mpi_info, 1 * HOUR_IN_SECONDS );
-
-
-			} else {
-
-				$mpi_info = get_transient( $mpi_transient_name );
-
-			}
-			//return $plugin_data[$slug];
-
-
 			/**
 			 * Check if field exists
 			 * Return value based on the field attribute
@@ -126,9 +77,41 @@ if ( ! class_exists( 'DOT_MyPluginInfo' ) )
 
 			} else {
 
-				// Sanitize field attribute
+
+				// Sanitize attributes
+				$slug = sanitize_title( $slug );
 				$field = sanitize_title( $field );
 
+				// Create a empty array with variable name different based on plugin slug
+				$mpi_transient_name = 'mpi' . $slug;
+
+				/**
+				 * Check if transient with the plugin data exists
+				 */
+				$mpi_info = get_transient( $mpi_transient_name );
+
+				if ( empty( $mpi_info ) ) {
+
+					/**
+					 * Connect to WordPress.org using plugins_api
+					 * About plugins_api -
+					 * http://wp.tutsplus.com/tutorials/plugins/communicating-with-the-wordpress-org-plugin-api/
+					 */
+					require_once ABSPATH . 'wp-admin/includes/plugin-install.php';
+					$mpi_info = plugins_api( 'plugin_information', array( 'slug' => $slug ) );
+
+
+					// Check for errors with the data returned from WordPress.org
+					if ( !$mpi_info or is_wp_error( $mpi_info ) ) {
+						return false;
+					}
+
+
+					// Set a transient with the plugin data
+					// Use Options API with auto update cron job in next version.
+					set_transient($mpi_transient_name, $mpi_info, 1 * HOUR_IN_SECONDS );
+
+				}
 
 				if ( $field == "downloaded" ) {
 		        	return $mpi_info->downloaded;
@@ -162,9 +145,9 @@ if ( ! class_exists( 'DOT_MyPluginInfo' ) )
 		        	return $mpi_info->download_link;
 		    	}
 
-		    }
+		    } // $field check
 
-		}
+		} // render_mpi()
 
 
 	} // end class
