@@ -26,7 +26,7 @@ Please report any bugs you find via http://www.dreamsonline.net/wordpress-plugin
 
 If you like the plugin, please consider rating it and clicking on "it works" button.
 
-3 new fields added, thanks to @senlin (Piet - http://senlinonline.com/)
+3 new fields added, thanks to @senlin Piet - http://senlinonline.com/
 
 == Installation ==
 
