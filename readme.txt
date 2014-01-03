@@ -44,7 +44,7 @@ Take a look at the [official "My Plugin Info" FAQ](http://www.dreamsonline.net/w
 == Changelog ==
 
 = 0.2.0
-* Add 3 new fields, thanks to @senlin (Piet - http://senlinonline.com/)
+* Add 3 new fields, thanks to @senlin (Piet - http://senlinonline.com/ )
 
 = 0.1.1
 * Structual changes to improve logic
