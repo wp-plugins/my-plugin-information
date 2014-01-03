@@ -2,8 +2,8 @@
 /*
 Plugin Name: My Plugin Info
 Plugin URI: http://www.dreamsonline.net/wordpress-plugins/my-plugin-info/
-Description: Communicate with WordPress.org Plugins API to retrive your Plugin Information
-Version: 0.1.1
+Description: Communicate with WordPress.org Plugins API to retrieve your Plugin Information
+Version: 0.2.0
 Author: Dreams Online Themes
 Author Email: hello@dreamsmedia.in
 License:
@@ -144,6 +144,27 @@ if ( ! class_exists( 'DOT_MyPluginInfo' ) )
 				if ( $field == "download_link" ) {
 		        	return $mpi_info->download_link;
 		    	}
+
+				if ( $field == "requires" ) {
+					return $mpi_info->requires;
+				}
+
+				if ( $field == "tested" ) {
+					return $mpi_info->tested;
+				}
+
+          		/**
+                 * rating outputs a percentage, to get a number of stars like in the WP Plugin Repository, you need to divide the output by 20:
+                 *
+                 * $percentage = do_shortcode( '[mpi slug="' . $slug . '" field="rating"]' );
+                 * $stars = $percentage / 20;
+                 * printf( __( 'Rating: %s out of 5 stars', 'textdomain' ), $stars );
+                 *
+                 */
+
+                if ( $field == "rating" ) {
+                    return $mpi_info->rating;
+                }
 
 		    } // $field check
 

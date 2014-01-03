@@ -3,9 +3,9 @@ Contributors: hchouhan, dreamsonline, dreamsmedia
 Donate link: http://www.dreamsonline.net
 Tags: plugin, directory, list, plugin directory, data, plugin data
 Requires at least: 3.0
-Tested up to: 3.6.1
-Stable tag: 0.1.1
-Last Updated: 2013-OCT-01
+Tested up to: 3.8.0
+Stable tag: 0.2.0
+Last Updated: 2014-JAN-03
 Plugin Name: My Plugin Information
 Plugin URI: http://www.dreamsonline.net/wordpress-plugins/my-plugin-information/
 Author: Harish Chouhan
@@ -13,12 +13,12 @@ Author URI: http://www.dreamsonline.net/wordpress-themes/
 License: GPLv3 or later
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
-Communicate with WordPress.org Plugins API to retrive your Plugin Information
+Communicate with WordPress.org Plugins API to retrieve your Plugin Information
 
 
 == Description ==
 
-Want to display your WordPress.org hosted plugin data on your website? With this plugin you can communicate with WordPress.org Plugins API to retrive your Plugin Information.
+Want to display your WordPress.org hosted plugin data on your website? With this plugin you can communicate with WordPress.org Plugins API to retrieve your Plugin Information.
 
 Based on `plugins_api` - http://wp.tutsplus.com/tutorials/plugins/communicating-with-the-wordpress-org-plugin-api/
 
