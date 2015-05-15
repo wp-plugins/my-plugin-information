@@ -1,9 +1,9 @@
 === My Plugin Information ===
-Contributors: hchouhan, dreamsonline, dreamsmedia
+Contributors: hchouhan, dreamsmedia
 Donate link: http://www.dreamsonline.net
 Tags: plugin, directory, list, plugin directory, data, plugin data
 Requires at least: 3.0
-Tested up to: 3.8.0
+Tested up to: 4.2.2
 Stable tag: 0.2.0
 Last Updated: 2014-JAN-03
 Plugin Name: My Plugin Information
